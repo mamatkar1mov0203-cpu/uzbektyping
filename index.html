@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#323437">
+  <meta name="description" content="UzbekTyping — o‘zbekcha matnlar bilan yozish tezligi va aniqligini mashq qiling.">
+  <title>UzbekTyping — yozish tezligini sinang</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="UzbekTyping bosh sahifa">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        <span>uzbek<span class="brand-light">typing</span></span>
+      </a>
+      <nav class="header-links" aria-label="Asosiy menyu">
+        <a class="nav-link active" href="#test" aria-label="Yozish testi">⌨ <span>test</span></a>
+        <a class="nav-link" href="#about" aria-label="Sayt haqida">◉ <span>haqida</span></a>
+      </nav>
+      <button class="icon-button" id="themeButton" type="button" title="Rang mavzusini almashtirish" aria-label="Rang mavzusini almashtirish">◐</button>
+    </header>
+
+    <main id="test">
+      <section class="intro" aria-label="UzbekTyping">
+        <p class="eyebrow">O‘ZBEKCHA YOZISH MASHQI</p>
+        <h1>Fikringiz tezligida <span>yozing.</span></h1>
+        <p class="subtitle">Yozish tezligingizni sinang, aniqligingizni oshiring.</p>
+      </section>
+
+      <section class="test-card" aria-label="Yozish testi">
+        <div class="settings-bar">
+          <div class="setting-group" aria-label="Test rejimi">
+            <button class="setting-option selected" data-mode="time" type="button">◷ <span>vaqt</span></button>
+            <button class="setting-option" data-mode="words" type="button">▤ <span>so‘zlar</span></button>
+          </div>
+          <span class="setting-divider"></span>
+          <div class="setting-group choices" id="timeChoices" aria-label="Test davomiyligi">
+            <button class="choice selected" data-value="15" type="button">15</button>
+            <button class="choice" data-value="30" type="button">30</button>
+            <button class="choice" data-value="60" type="button">60</button>
+            <button class="choice" data-value="120" type="button">120</button>
+          </div>
+          <div class="setting-group choices hidden" id="wordChoices" aria-label="So‘zlar soni">
+            <button class="choice selected" data-value="10" type="button">10</button>
+            <button class="choice" data-value="25" type="button">25</button>
+            <button class="choice" data-value="50" type="button">50</button>
+            <button class="choice" data-value="100" type="button">100</button>
+          </div>
+          <span class="setting-divider"></span>
+          <span class="language-label"><span class="green-dot"></span> o‘zbekcha</span>
+          <span class="bar-spacer"></span>
+          <button class="setting-option" id="punctuationToggle" type="button" aria-pressed="false" title="Tinish belgilarini yoqish">¶ <span>belgilar</span></button>
+        </div>
+
+        <div class="test-area" id="testArea">
+          <div class="live-stats" aria-live="polite">
+            <div class="stat"><span class="stat-label" id="timerLabel">V A Q T</span><span class="stat-value timer-value" id="timer">15</span></div>
+            <div class="stat live-wpm"><span class="stat-label">W P M</span><span class="stat-value" id="liveWpm">0</span></div>
+          </div>
+          <div class="text-window" id="textWindow" tabindex="0" role="button" aria-label="Yozishni boshlash uchun bosing yoki istalgan tugmani bosing">
+            <div class="words" id="words" aria-hidden="true"></div>
+            <div class="start-hint" id="startHint"><span class="enter-key">↵</span> yozishni boshlash uchun bosing</div>
+          </div>
+          <input id="typingInput" class="typing-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Matn terish maydoni">
+          <div class="test-footer">
+            <span><kbd>tab</kbd> + <kbd>enter</kbd> — qayta boshlash</span>
+            <span class="footer-center">matnlar · o‘zbek tili</span>
+            <button class="restart-button" id="restartButton" type="button" title="Testni qayta boshlash (Tab + Enter)">↻ <span>qayta boshlash</span></button>
+          </div>
+        </div>
+
+        <section class="results hidden" id="results" aria-live="polite">
+          <p class="eyebrow">TEST YAKUNLANDI</p>
+          <h2>Yaxshi ishladingiz!</h2>
+          <div class="result-grid">
+            <div class="result-item"><span class="result-label">TEZLIK</span><strong><span id="resultWpm">0</span><small>WPM</small></strong></div>
+            <div class="result-item"><span class="result-label">ANIQLIK</span><strong><span id="resultAccuracy">100</span><small>%</small></strong></div>
+            <div class="result-item"><span class="result-label">TO‘G‘RI BELGILAR</span><strong id="resultCorrect">0</strong></div>
+            <div class="result-item"><span class="result-label">XATOLAR</span><strong id="resultErrors">0</strong></div>
+          </div>
+          <button class="primary-button" id="resultRestart" type="button">↻ &nbsp; yana bir bor</button>
+        </section>
+      </section>
+
+      <section class="tips" id="about">
+        <span class="tip-icon">✳</span>
+        <p><strong>Maslahat:</strong> tezlikdan ko‘ra aniqlikka e’tibor bering. Barqaror mashq — tez yozishning kaliti.</p>
+      </section>
+      <footer class="page-footer"><span>o‘zbek tili uchun, mehr bilan</span><span>uzbektyping <span class="footer-dot">·</span> 2026</span></footer>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
